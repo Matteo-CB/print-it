@@ -22,22 +22,32 @@ const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 const bannerImg = document.querySelector(".banner-img");
 const tagLine = document.querySelector("#banner p");
+const dots = document.getElementById("dots");
 let index = 0;
+dots.children[index].classList.add("dot_selected");
 
 arrowLeft.addEventListener("click", () => {
+  dots.children[index].classList.remove("dot_selected");
   if (index == 0) {
     index = 3;
+    dots.children[index].classList.add("dot_selected");
+  } else {
+    index--;
+    dots.children[index].classList.add("dot_selected");
   }
-  bannerImg.src = "./assets/images/slideshow/" + slides[index - 1].image;
-  tagLine.innerHTML = slides[index - 1].tagLine;
-  index--;
+  bannerImg.src = "./assets/images/slideshow/" + slides[index].image;
+  tagLine.innerHTML = slides[index].tagLine;
 });
 
 arrowRight.addEventListener("click", () => {
+  dots.children[index].classList.remove("dot_selected");
   if (index == 3) {
     index = 0;
+    dots.children[index].classList.add("dot_selected");
+  } else {
+    index++;
+    dots.children[index].classList.add("dot_selected");
   }
-  bannerImg.src = "./assets/images/slideshow/" + slides[index + 1].image;
-  tagLine.innerHTML = slides[index + 1].tagLine;
-  index++;
+  bannerImg.src = "./assets/images/slideshow/" + slides[index].image;
+  tagLine.innerHTML = slides[index].tagLine;
 });
